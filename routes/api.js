@@ -15,7 +15,7 @@ module.exports = function (app) {
       return res.json({ error: "Required field(s) missing" });
     }
     // If text is empty
-    else if (text == "") return res.json({ error: "No text to translate" });
+    else if (!text) return res.json({ error: "No text to translate" });
     // If locale does not match one of the two specified locales
     else if (
       locale !== "american-to-british" &&
