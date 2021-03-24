@@ -11,9 +11,9 @@ module.exports = function (app) {
     let updatedString = "";
 
     // If one or more of the required fields is missing
-    if (!text && !locale) {
+    if (!text || !locale) {
       return res.json({ error: "Required field(s) missing" });
-    } else if (!locale) return res.json({ error: "Required field(s) missing" });
+    }
     // If text is empty
     else if (!text) return res.json({ error: "No text to translate" });
     // If locale does not match one of the two specified locales
