@@ -13,7 +13,7 @@ module.exports = function (app) {
     // If both fields exist
     if (text && locale) {
       // If text is empty
-      if (!text) return res.json({ error: "No text to translate" });
+      if (text == "") return res.json({ error: "No text to translate" });
       // If locale does not match one of the two specified locales
       else if (
         locale !== "american-to-british" &&
