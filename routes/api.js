@@ -11,7 +11,7 @@ module.exports = function (app) {
     let updatedString = "";
 
     // If both fields exist
-    if (text && locale) {
+    if (text || locale) {
       // If text is empty
       if (text == "") return res.json({ error: "No text to translate" });
       // If locale does not match one of the two specified locales
