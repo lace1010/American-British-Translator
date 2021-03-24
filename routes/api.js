@@ -11,9 +11,9 @@ module.exports = function (app) {
     let updatedString = "";
 
     // If one or more of the required fields is missing
-    if (!text || !locale) {
+    if (!text && !locale) {
       return res.json({ error: "Required field(s) missing" });
-    }
+    } else if (!locale) return res.json({ error: "Required field(s) missing" });
     // If text is empty
     else if (!text) return res.json({ error: "No text to translate" });
     // If locale does not match one of the two specified locales
@@ -28,7 +28,10 @@ module.exports = function (app) {
       updatedString = translator.americanToBritish(text).translation;
       // If text requires no translation (If text and translated string are the same)
       if (text == updatedString) {
-        return res.json({ translation: "Everything looks good to me!" });
+        return res.json({
+          text: text,
+          translation: "Everything looks good to me!",
+        });
       }
       // else return translated object (updatedString is inside object)
       else return res.json(translator.americanToBritish(text));
@@ -40,7 +43,10 @@ module.exports = function (app) {
       console.log(text, "<= text in api.js");
       // If text requires no translation (If text and translated string are the same)
       if (text == updatedString) {
-        return res.json({ translation: "Everything looks good to me!" });
+        return res.json({
+          text: text,
+          translation: "Everything looks good to me!",
+        });
       }
       // else return translated object (updatedString is inside object)
       return res.json(translator.britishToAmerican(text));
