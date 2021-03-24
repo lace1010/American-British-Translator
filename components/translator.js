@@ -12,17 +12,14 @@ class Translator {
     // Check every word and see if a time is there. If so then return the british form of time.
     let updatedTimeArray = splitTextArray.map((i) => {
       if (timeRegex.test(i)) {
-        return (i = "<span class='highliht'>" + i.replace(":", ".") + "<span>");
+        return (i = i.replace(":", "."));
       } else return i;
     });
 
     // loop through each word and if one matches a property in title object change it to british one
     let updatedTitlesArray = updatedTimeArray.map((i) => {
       if (americanToBritishTitles.hasOwnProperty(i)) {
-        return (
-          (i = "<span class='highliht'>" + americanToBritishTitles[i]) +
-          "<span>"
-        );
+        return (i = americanToBritishTitles[i]);
       } else return i;
     });
 
@@ -36,7 +33,7 @@ class Translator {
     let splitTextArray = text.split(" ");
     let updatedTimeArray = splitTextArray.map((i) => {
       if (timeRegex.test(i)) {
-        return (i = "<span class='highliht'>" + i.replace(".", ":") + "<span>");
+        return (i = i.replace(".", ":"));
       } else return i;
     });
 
@@ -47,7 +44,7 @@ class Translator {
           Object.values(americanToBritishTitles).indexOf(i)
         ];
         // Now return key that is based off of the i found
-        return (i = "<span class='highliht'>" + key + "<span>");
+        return (i = key);
       } else return i;
     });
 
