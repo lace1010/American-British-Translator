@@ -39,8 +39,6 @@ module.exports = function (app) {
     // If locale is british to american
     else if (locale === "british-to-american") {
       updatedString = translator.britishToAmerican(text).translation;
-      console.log(updatedString, "<= updated string in api.js");
-      console.log(text, "<= text in api.js");
       // If text requires no translation (If text and translated string are the same)
       if (text == updatedString) {
         return res.json({
