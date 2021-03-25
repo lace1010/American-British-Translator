@@ -5,7 +5,8 @@ const britishOnly = require("./british-only.js");
 
 class Translator {
   americanToBritish(text) {
-    let updatedString = text;
+    // Make first letter in sentence lowercase so it can match objects and be translated if need be.
+    let updatedString = text.replace(text[0], text[0].toLowerCase());
 
     // Loops throught every object key in americanOnly and checks if it is in the text. If so replace i with the british value.
     Object.keys(americanOnly).map((i) => {
@@ -55,18 +56,30 @@ class Translator {
     // rejoin the updatedArray to have updatedString now translate to correct british time format.
     updatedString = updatedArray.join(" ");
 
+    // Capitolize the first letter in updatedString
+    if (updatedString[0] == "<") {
+      // If the first character is < then it has to be <span...> meaning the first word starts at [24]
+      updatedString =
+        updatedString.slice(0, 24) +
+        updatedString.charAt(24).toUpperCase() +
+        updatedString.slice(25, updatedString.length);
+    } else {
+      updatedString =
+        updatedString.charAt(0).toUpperCase() + updatedString.slice(1);
+    }
+    // If the original has text with words that are capitolized then capitalize those words again now if they havent been translated.
     return { text: text, translation: updatedString };
   }
 
   // Fix britishToAmerican function just like americanToBritish
 
   britishToAmerican(text) {
-    let updatedString = text;
+    let updatedString = text.replace(text[0], text[0].toLowerCase());
     let key;
 
     // For britishOnly the key is British and value is American so we loop through Object.keys because we are translating to American
     Object.keys(britishOnly).map((i) => {
-      if (updatedString.includes(i)) {
+      if (updatedString.includes(i + " ") || updatedString.includes(i + ".")) {
         updatedString = updatedString.replace(
           i,
           '<span class="highlight">' + britishOnly[i] + "</span>"
@@ -93,7 +106,7 @@ class Translator {
     //  Loops through every object value in americanToBritishTitles and checks if it is in the text. If so replace i with the american key.
     Object.values(americanToBritishTitles).map((i) => {
       //  If string includes a value in americanToBritishTitles object
-      if (updatedString.includes(i)) {
+      if (updatedString.includes(i + " ") || updatedString.includes(i + ".")) {
         // This is a way to return the key based on found value
         key = Object.keys(americanToBritishTitles)[
           Object.values(americanToBritishTitles).indexOf(i)
@@ -123,8 +136,21 @@ class Translator {
     });
     updatedString = updatedArray.join(" ");
 
+    // Capitolize the first word in string
+    if (updatedString[0] == "<") {
+      // If the first character is < then it has to be <span...> meaning the first word starts at [24]
+      updatedString =
+        updatedString.slice(0, 24) +
+        updatedString.charAt(24).toUpperCase() +
+        updatedString.slice(25, updatedString.length);
+    } else {
+      updatedString =
+        updatedString.charAt(0).toUpperCase() + updatedString.slice(1);
+    }
     return { text: text, translation: updatedString };
   }
 }
 
 module.exports = Translator;
+
+// WORK ON MAKING STRING GO TO LOWERCASE IN IF CONDITION
