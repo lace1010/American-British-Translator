@@ -10,7 +10,11 @@ class Translator {
 
     // Loops throught every object key in americanOnly and checks if it is in the text. If so replace i with the british value.
     Object.keys(americanOnly).map((i) => {
-      if (updatedString.includes(i)) {
+      if (
+        updatedString.includes(i + " ") ||
+        updatedString.includes(i + ".") ||
+        updatedString.includes(i + "?")
+      ) {
         updatedString = updatedString.replace(
           i,
           '<span class="highlight">' + americanOnly[i] + "</span>"
@@ -30,7 +34,11 @@ class Translator {
 
     // Loops through every object key in americanToBritishTitles and checks if it is in the text. If so replace i with the british value.
     Object.keys(americanToBritishTitles).map((i) => {
-      if (updatedString.includes(i)) {
+      if (
+        updatedString.includes(i + " ") ||
+        updatedString.includes(i + ".") ||
+        updatedString.includes(i + "?")
+      ) {
         updatedString = updatedString.replace(
           i,
           '<span class="highlight">' + americanToBritishTitles[i] + "</span>"
@@ -79,7 +87,13 @@ class Translator {
 
     // For britishOnly the key is British and value is American so we loop through Object.keys because we are translating to American
     Object.keys(britishOnly).map((i) => {
-      if (updatedString.includes(i + " ") || updatedString.includes(i + ".")) {
+      // if key is matched and has a space behing (there fore a shorter word doesn't translate inside a bigger word.)
+      // or if it is followed by a special character
+      if (
+        updatedString.includes(i + " ") ||
+        updatedString.includes(i + ".") ||
+        updatedString.includes(i + "?")
+      ) {
         updatedString = updatedString.replace(
           i,
           '<span class="highlight">' + britishOnly[i] + "</span>"
@@ -106,7 +120,11 @@ class Translator {
     //  Loops through every object value in americanToBritishTitles and checks if it is in the text. If so replace i with the american key.
     Object.values(americanToBritishTitles).map((i) => {
       //  If string includes a value in americanToBritishTitles object
-      if (updatedString.includes(i + " ") || updatedString.includes(i + ".")) {
+      if (
+        updatedString.includes(i + " ") ||
+        updatedString.includes(i + ".") ||
+        updatedString.includes(i + "?")
+      ) {
         // This is a way to return the key based on found value
         key = Object.keys(americanToBritishTitles)[
           Object.values(americanToBritishTitles).indexOf(i)

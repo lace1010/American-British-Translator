@@ -36,7 +36,7 @@ suite("Unit Tests => American to British", () => {
     let input = "Can you toss this in the trashcan for me?";
     assert.equal(
       translator.americanToBritish(input).translation,
-      'Can you toss this in the <span class="highlight">rubbish</span>can for me?'
+      'Can you toss this in the <span class="highlight">bin</span> for me?'
     );
     done();
   });
