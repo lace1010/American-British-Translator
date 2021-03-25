@@ -37,6 +37,7 @@ class Translator {
       }
     });
 
+    // Translate time format.
     // split new updated string by space to find a time
     let splitTextArray = updatedString.split(" ");
     let timeRegex = /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]/;
@@ -109,6 +110,7 @@ class Translator {
       }
     });
 
+    // Translate time format.
     // split updatedString to translate times now
     let splitTextArray = updatedString.split(" ");
     let timeRegex = /^([0-1]?[0-9]|2[0-3])\.[0-5][0-9]/;
