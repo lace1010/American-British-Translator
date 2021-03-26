@@ -23,6 +23,13 @@ class Translator {
           '<span class="highlight">' + americanOnly[i] + "</span>"
         );
       }
+      // Add this else if for when there is just a word/phrase to be translated
+      else if (updatedString.split(" ")[0] == i.split(" ")[0]) {
+        updatedString = updatedString.replace(
+          i,
+          '<span class="highlight">' + americanOnly[i] + "</span>"
+        );
+      }
     });
 
     // Loops throught every object key in americanToBritishSpelling and checks if it is in the text. If so replace i with the british value.
