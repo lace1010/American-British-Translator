@@ -9,37 +9,44 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
     <link id="favicon" rel="icon" href="https://cdn.freecodecamp.org/universal/favicons/favicon-32x32.png" type="image/x-icon">
 	<link rel="stylesheet" href="../public/style.css" type="text/css" />
+  <!-- Font Awesome link -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+		
 </head>
 
 <body>
+  <div id="fullContainer">
 	<header>
-		<h1>
-			American / British English Translator
+		<h1 id="title">
+			American to British English Translator
 		</h1>
+    <p id="titleDescription">American to British translator changes words from American english to British english</p>
 	</header>
-	<hr style="margin: 25px" />
 	<div class="container">
 		<div class="form-container">
 			<textarea
           rows="10"
-          cols="60"
           id="text-input"
+          placeholder="Enter American text here..."
         ></textarea>
         <br />
-        <select id="locale-select">
-          <option value="american-to-british">American to British</option>
-          <option value="british-to-american">British to American</option>
-        </select>
+        <button id="locale-select" value="american-to-british" class="fas fa-sync-alt">
+           American to British
+        </button>
         <input type="button" value="Translate" id="translate-btn"/>
-      </div>
-      <div id="output-container">
-        <div id="solution-container">
-          Translated Sentence:
-          <div id="translated-sentence"></div>
-          <div id="error-msg"></div>
-        </div>
+    </div>
+    <div id="output-container">
+      <div id="solution-container">
+        <span id="solution-header">British Text:</span>
+        <div id="translated-sentence"></div>
+        <div id="error-msg"></div>
+       </div>
       </div>
     </div>
+    <footer>
+      Designed and Coded by: <a id="footerLink" href="https://www.linkedin.com/in/hunter-lacefield-871995115/">Hunter Lacefield</a>
+    </footer>
+  </div>
   </body>
   <script src="../public/index.js"></script>
 </html>
