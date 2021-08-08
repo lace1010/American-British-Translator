@@ -168,7 +168,7 @@ module.exports = {
   trash: "rubbish",
   trashcan: "bin",
   "travel trailer": "caravan",
-  trunk: "boot",
+  trunk: "car boot",
   "turn signal": "turn-indicators",
   tylenol: "paracetamol",
   upscale: "upmarket",

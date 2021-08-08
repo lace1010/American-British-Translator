@@ -24,7 +24,6 @@ module.exports = {
   "bog roll": "roll of toilet paper",
   "bog-standard": "garden-variety",
   "boiled sweet": "hard candy",
-  boot: "trunk",
   "bone-idle": "lazy",
   brekkie: "breakfast",
   brekky: "breakfast",
